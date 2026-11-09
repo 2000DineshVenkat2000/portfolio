@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Dinesh Kumar Sai Melapadi — Senior Data Engineer specializing in Azure, Snowflake, scalable data platforms and AI-powered analytics.">
+  <meta name="theme-color" content="#101827">
+  <title>Dinesh Kumar Sai Melapadi | Senior Data Engineer</title>
+
+  <!-- Bootstrap 5.3: the portfolio is a single HTML file; Bootstrap is loaded from its CDN. -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #eaf0f8;
+      --muted: #a9b6c9;
+      --bg: #0b1220;
+      --surface: #111c2e;
+      --surface-2: #16243a;
+      --line: rgba(188, 208, 235, .14);
+      --accent: #65d6c4;
+      --accent-2: #82aaff;
+      --warm: #f4c77b;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      background: var(--bg); color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.68;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: #a1f0e3; }
+    .navbar {
+      background: rgba(11,18,32,.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .navbar-brand { color: var(--ink); font-weight: 800; letter-spacing: .02em; }
+    .navbar .nav-link { color: #c4d0e0; font-size: .93rem; }
+    .navbar .nav-link:hover, .navbar .nav-link:focus { color: var(--accent); }
+    .navbar-toggler { border-color: var(--line); }
+    .navbar-toggler-icon { filter: invert(1); }
+    .hero {
+      min-height: 88vh; display: flex; align-items: center; position: relative; overflow: hidden;
+      background:
+        radial-gradient(ellipse at 78% 22%, rgba(101,214,196,.16), transparent 34%),
+        radial-gradient(ellipse at 10% 80%, rgba(130,170,255,.14), transparent 38%),
+        var(--bg);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22;
+      background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 42px 42px; mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .eyebrow { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2.6rem, 6vw, 5.2rem); font-weight: 850; letter-spacing: -.055em; line-height: 1.04; }
+    .hero h1 span { color: var(--accent); }
+    .hero-lead { color: #c0cddd; font-size: clamp(1.04rem, 2vw, 1.25rem); max-width: 760px; }
+    .btn-accent {
+      background: var(--accent); color: #09201e; border: 1px solid var(--accent);
+      font-weight: 750; padding: .78rem 1.2rem; border-radius: .7rem;
+    }
+    .btn-accent:hover { background: #a1f0e3; color: #09201e; border-color: #a1f0e3; }
+    .btn-outline-soft {
+      border: 1px solid rgba(210,225,245,.3); color: var(--ink);
+      padding: .78rem 1.2rem; border-radius: .7rem; font-weight: 650;
+    }
+    .btn-outline-soft:hover { background: rgba(255,255,255,.08); color: white; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .tag {
+      border: 1px solid var(--line); background: rgba(255,255,255,.045);
+      color: #d6e2f1; border-radius: 99px; padding: .38rem .72rem; font-size: .83rem;
+    }
+    section { padding: 5.5rem 0; }
+    .section-kicker { color: var(--accent); font-size: .76rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .section-title { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -.035em; }
+    .section-intro { color: var(--muted); max-width: 760px; }
+    .surface {
+      background: linear-gradient(145deg, rgba(22,36,58,.96), rgba(17,28,46,.96));
+      border: 1px solid var(--line); border-radius: 1.15rem;
+      box-shadow: 0 18px 55px rgba(0,0,0,.14);
+    }
+    .surface h3, .surface h4 { color: #f2f6fc; }
+    .muted { color: var(--muted); }
+    .metric { font-size: clamp(1.7rem, 4vw, 2.45rem); font-weight: 850; letter-spacing: -.04em; color: var(--accent); }
+    .metric-label { color: #b5c2d3; font-size: .9rem; }
+    .icon-tile {
+      width: 2.8rem; height: 2.8rem; border-radius: .8rem; display: grid; place-items: center;
+      background: rgba(101,214,196,.12); color: var(--accent); font-size: 1.25rem; flex: 0 0 auto;
+    }
+    .skill-pill {
+      display: inline-block; padding: .42rem .7rem; margin: .22rem .18rem .22rem 0;
+      border: 1px solid var(--line); border-radius: .55rem; background: rgba(255,255,255,.035);
+      color: #d6e1ef; font-size: .87rem;
+    }
+    .project-number { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .14em; }
+    .project-card { height: 100%; transition: transform .2s ease, border-color .2s ease; }
+    .project-card:hover { transform: translateY(-4px); border-color: rgba(101,214,196,.42); }
+    .bullet-list { padding-left: 1.1rem; color: #c2cede; }
+    .bullet-list li { margin-bottom: .55rem; padding-left: .15rem; }
+    .bullet-list li::marker { color: var(--accent); }
+    .timeline { position: relative; padding-left: 1.55rem; }
+    .timeline::before { content: ""; position: absolute; left: .36rem; top: .4rem; bottom: .4rem; width: 1px; background: var(--line); }
+    .timeline-item { position: relative; padding-bottom: 2.2rem; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: ""; position: absolute; left: -1.55rem; top: .42rem; width: .75rem; height: .75rem;
+      border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(101,214,196,.12);
+    }
+    .role-date { color: var(--accent); font-size: .82rem; font-weight: 750; }
+    .role-company { color: #d3deec; font-weight: 650; }
+    .divider { border-color: var(--line); opacity: 1; }
+    .contact-link { display: flex; align-items: flex-start; gap: .8rem; color: #dce6f3; overflow-wrap: anywhere; }
+    .contact-link i { color: var(--accent); font-size: 1.1rem; margin-top: .15rem; }
+    footer { border-top: 1px solid var(--line); color: #91a1b7; padding: 1.6rem 0; font-size: .88rem; }
+    .back-top { position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 20; width: 2.8rem; height: 2.8rem; border-radius: 50%; }
+    @media (max-width: 767.98px) {
+      .hero { min-height: auto; padding: 8rem 0 5rem; }
+      section { padding: 4.2rem 0; }
+    }
+    @media print {
+      .navbar, .back-top, .hero .btn { display: none !important; }
+      body { background: #fff; color: #111; }
+      .surface { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="100" tabindex="0">
+
+<nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home">DK<span style="color:var(--accent)">.</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navContent">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+        <li class="nav-item ms-lg-2"><a class="btn btn-accent btn-sm px-3" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="home" class="hero">
+  <div class="container hero-content">
+    <div class="row align-items-center">
+      <div class="col-lg-10">
+        <div class="eyebrow mb-3">Senior Data Engineer · Bengaluru, India</div>
+        <h1 class="mb-4">Making trusted data<br><span>readily available</span><br>for BI &amp; AI systems.</h1>
+        <p class="hero-lead mb-4">
+          I'm <strong>Dinesh Kumar Sai Melapadi</strong> — a Senior Data Engineer with 5+ years of experience
+          building cloud data engineering and warehousing solutions across Azure and Snowflake, with a growing
+          focus on AI-powered analytics and agent integrations.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mb-4">
+          <a class="btn btn-accent" href="#projects"><i class="bi bi-grid-1x2-fill me-2"></i>Explore my work</a>
+          <a class="btn btn-outline-soft" href="#contact"><i class="bi bi-send me-2"></i>Get in touch</a>
+        </div>
+        <div class="hero-tags">
+          <span class="tag">Azure Event Hubs</span><span class="tag">Snowflake</span>
+          <span class="tag">Apache Spark</span><span class="tag">Python</span>
+          <span class="tag">Snowpark</span><span class="tag">MCP &amp; NLQ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5">
+        <div class="section-kicker mb-2">01 / About</div>
+        <h2 class="section-title mb-3">Engineering data into useful outcomes.</h2>
+        <p class="section-intro">
+          I work across the data platform lifecycle — from API-based ingestion and event-driven processing
+          to transformation, warehousing, and secure data delivery, making trusted and timely data readily
+          available for Business Intelligence (BI), analytics, and AI-powered systems.
+        </p>
+      </div>
+      <div class="col-lg-7">
+        <div class="surface p-4 p-lg-5">
+          <p class="mb-3">
+            My experience spans near-real-time and scheduled ELT pipelines, dimensional data modelling,
+            data quality and governance, and customer-facing Snowflake data sharing. I enjoy solving
+            engineering problems where reliability, performance, and maintainability matter.
+          </p>
+          <p class="mb-0 muted">
+            More recently, I have worked on AI-enabled business analytics using Snowflake Cortex and the
+            Model Context Protocol (MCP), exploring ways to make enterprise data easier to access through
+            users' preferred LLM tools and agents.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-4">
+      <div class="col-6 col-lg-3"><div class="surface p-3 h-100"><div class="metric">5+</div><div class="metric-label">Years in data engineering</div></div></div>
+      <div class="col-6 col-lg-3"><div class="surface p-3 h-100"><div class="metric">10–15K</div><div class="metric-label">Records ingested per minute</div></div></div>
+      <div class="col-6 col-lg-3"><div class="surface p-3 h-100"><div class="metric">5</div><div class="metric-label">Customer Reader Accounts supported</div></div></div>
+      <div class="col-6 col-lg-3"><div class="surface p-3 h-100"><div class="metric">90 → 10</div><div class="metric-label">Minutes: optimized Power BI refresh</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="expertise" style="background:rgba(255,255,255,.018)">
+  <div class="container">
+    <div class="section-kicker mb-2">02 / Technical expertise</div>
+    <h2 class="section-title mb-3">Tools and technologies</h2>
+    <p class="section-intro mb-4">A practical toolkit across cloud data platforms, distributed processing, APIs, analytics, and AI integrations.</p>
+    <div class="row g-3">
+      <div class="col-md-6 col-xl-4">
+        <div class="surface p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-3"><div class="icon-tile"><i class="bi bi-cloud-arrow-up"></i></div><h3 class="h5 mb-0">Cloud &amp; Data Platforms</h3></div>
+          <span class="skill-pill">Microsoft Azure</span><span class="skill-pill">Azure Synapse Analytics</span><span class="skill-pill">ADLS Gen2</span><span class="skill-pill">Azure Event Hubs</span><span class="skill-pill">Azure Data Factory</span><span class="skill-pill">Azure Functions</span><span class="skill-pill">Snowflake</span><span class="skill-pill">Databricks</span><span class="skill-pill">AWS S3</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-4">
+        <div class="surface p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-3"><div class="icon-tile"><i class="bi bi-code-slash"></i></div><h3 class="h5 mb-0">Programming &amp; Processing</h3></div>
+          <span class="skill-pill">Python</span><span class="skill-pill">SQL / T-SQL</span><span class="skill-pill">Apache Spark</span><span class="skill-pill">PySpark</span><span class="skill-pill">Spark SQL</span><span class="skill-pill">Snowpark Python</span><span class="skill-pill">Pandas</span><span class="skill-pill">Dask</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-4">
+        <div class="surface p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-3"><div class="icon-tile"><i class="bi bi-diagram-3"></i></div><h3 class="h5 mb-0">API &amp; Integration</h3></div>
+          <span class="skill-pill">FastAPI</span><span class="skill-pill">Flask</span><span class="skill-pill">REST APIs</span><span class="skill-pill">Event-driven architecture</span><span class="skill-pill">Parquet</span><span class="skill-pill">Delta Lake</span><span class="skill-pill">Medallion Architecture</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-4">
+        <div class="surface p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-3"><div class="icon-tile"><i class="bi bi-stars"></i></div><h3 class="h5 mb-0">AI &amp; Agent Integrations</h3></div>
+          <span class="skill-pill">Snowflake Cortex Analyst</span><span class="skill-pill">Cortex Agents</span><span class="skill-pill">Model Context Protocol (MCP)</span><span class="skill-pill">Natural Language Querying</span><span class="skill-pill">Text-to-SQL</span><span class="skill-pill">Semantic Data Modelling</span><span class="skill-pill">LLM Tool Integration</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-4">
+        <div class="surface p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-3"><div class="icon-tile"><i class="bi bi-shield-check"></i></div><h3 class="h5 mb-0">Governance &amp; Analytics</h3></div>
+          <span class="skill-pill">Microsoft Purview</span><span class="skill-pill">Great Expectations</span><span class="skill-pill">Row-Level Security</span><span class="skill-pill">Snowflake Reader Accounts</span><span class="skill-pill">Power BI</span><span class="skill-pill">Data Quality</span><span class="skill-pill">Secure Data Sharing</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-4">
+        <div class="surface p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-3"><div class="icon-tile"><i class="bi bi-git"></i></div><h3 class="h5 mb-0">DevOps &amp; Services</h3></div>
+          <span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">Azure DevOps</span><span class="skill-pill">Azure Key Vault</span><span class="skill-pill">Azure Monitor</span><span class="skill-pill">Azure Logic Apps</span><span class="skill-pill">Azure Log Analytics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-kicker mb-2">03 / Selected work</div>
+    <h2 class="section-title mb-3">Projects and engineering impact</h2>
+    <p class="section-intro mb-4">Selected initiatives across Cyncly and Tiger Analytics — spanning enterprise data migration, cloud warehousing, data transformation, AI-enabled analytics, and measurable performance improvements.</p>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <article class="surface project-card p-4 p-lg-5">
+          <div class="project-number mb-2">PROJECT 01 · DATA PLATFORM</div>
+          <h3 class="h4 mb-3">Near-real-time Data Migration &amp; ELT Platform</h3>
+          <p class="muted">A unified ingestion architecture for desktop and web product applications, plus API performance logs, landing data in ADLS Gen2 and loading curated data into Snowflake.</p>
+          <ul class="bullet-list">
+            <li>Built a single FastAPI POST endpoint to accept multiple business-object payloads, identify the object, validate its schema, and route the data.</li>
+            <li>Published sub-1 MB payloads to business-object-specific Azure Event Hubs; routed larger payloads directly to ADLS Gen2 as JSON.</li>
+            <li>Developed paired Azure Functions for Event Hub and Storage Account event triggers to process both paths and write Parquet files to the Raw / Bronze layer.</li>
+            <li>Built Spark, Pandas, and Dask transformations on Azure Synapse Spark Pools, followed by SQL- and Snowpark-based merges into Snowflake Silver tables every 4–6 hours.</li>
+          </ul>
+          <hr class="divider">
+          <div class="small muted mb-2">Reported ingestion throughput</div>
+          <div class="d-flex flex-wrap gap-4">
+            <div><div class="metric fs-3">10–15K</div><div class="metric-label">records / minute</div></div>
+            <div><div class="metric fs-3">50–100 KB</div><div class="metric-label">typical payload size</div></div>
+          </div>
+          <div class="mt-3 small muted">Stack: Azure Event Hubs, FastAPI, Azure Functions, ADLS Gen2, Synapse Spark, Snowflake, Snowpark, Python.</div>
+        </article>
+      </div>
+      <div class="col-lg-6">
+        <article class="surface project-card p-4 p-lg-5">
+          <div class="project-number mb-2">PROJECT 02 · AI &amp; BUSINESS ANALYTICS</div>
+          <h3 class="h4 mb-3">Snowflake Natural Language Querying (NLQ)</h3>
+          <p class="muted">Evaluated ways for business users to ask questions in natural language, generate SQL, execute it against Snowflake, and receive summarized or visualized results.</p>
+          <ul class="bullet-list">
+            <li>Built a PoC using Snowflake Cortex Analyst, semantic data models, and Cortex Agents.</li>
+            <li>Collaborated with AI Engineering to evaluate an in-house agent using the same semantic model.</li>
+            <li>Designed a Snowflake MCP Server with two tools: retrieve the semantic model as YAML and execute SQL queries with results returned to the client.</li>
+            <li>Compared solution costs, identifying approximately $0.45 per query for Cortex Agents versus $0.15 for the in-house solution, based on the evaluated setup.</li>
+            <li>Finalized a vendor-neutral MCP approach tested with Claude Desktop and OpenAI Codex, allowing users to use their preferred LLM tools and manage their own LLM costs.</li>
+            <li>Embedded workflow, dependencies, and execution guidance in tool descriptions to reduce additional prompt instructions.</li>
+          </ul>
+          <div class="mt-3 small muted">Stack: Snowflake Cortex Analyst, Cortex Agents, MCP, Python, SQL, YAML, Claude Desktop, OpenAI Codex.</div>
+        </article>
+      </div>
+      <div class="col-lg-6">
+        <article class="surface project-card p-4 p-lg-5">
+          <div class="project-number mb-2">PROJECT 03 · CUSTOMER DATA SHARING</div>
+          <h3 class="h4 mb-3">Snowflake Reader Account Administration</h3>
+          <p class="muted">Administered dedicated Snowflake Reader Accounts for five Cyncly customers, enabling secure data sharing without requiring customers to maintain their own Snowflake accounts.</p>
+          <ul class="bullet-list">
+            <li>Provisioned and maintained customer-specific Reader Accounts.</li>
+            <li>Managed roles, warehouses, access configurations, and row-level security.</li>
+            <li>Provided ongoing operational support and access management for external customers.</li>
+          </ul>
+          <div class="mt-3 small muted">Focus: Snowflake Reader Accounts, secure data sharing, role management, RLS, SQL.</div>
+        </article>
+      </div>
+      <div class="col-lg-6">
+        <article class="surface project-card p-4 p-lg-5">
+          <div class="project-number mb-2">PROJECT 04 · PERFORMANCE ENGINEERING</div>
+          <h3 class="h4 mb-3">Snowpark Optimization for Power BI Refresh</h3>
+          <p class="muted">Addressed slow and failing Power BI semantic model refreshes caused by complex Gold-layer business logic implemented in Snowflake views.</p>
+          <ul class="bullet-list">
+            <li>Investigated refresh bottlenecks in the Snowflake-backed Power BI data model.</li>
+            <li>Developed Snowpark Python optimization scripts to improve execution efficiency of the underlying transformations and queries.</li>
+            <li>Reduced refresh duration from approximately 90 minutes with repeated failures to 10 minutes with successful refreshes.</li>
+          </ul>
+          <div class="mt-4">
+            <div class="d-flex justify-content-between small mb-2"><span class="muted">Before</span><strong>90 minutes</strong></div>
+            <div class="progress mb-3" role="progressbar" aria-label="Before optimization" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="height:8px;background:#26364d"><div class="progress-bar" style="width:100%;background:#e8a36b"></div></div>
+            <div class="d-flex justify-content-between small mb-2"><span class="muted">After</span><strong class="text-success">10 minutes</strong></div>
+            <div class="progress" role="progressbar" aria-label="After optimization" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100" style="height:8px;background:#26364d"><div class="progress-bar" style="width:11.1%;background:var(--accent)"></div></div>
+          </div>
+        </article>
+      </div>
+      <div class="col-lg-6">
+        <article class="surface project-card p-4 p-lg-5">
+          <div class="project-number mb-2">PROJECT 05 · TIGER ANALYTICS · LUXURY / FASHION</div>
+          <h3 class="h4 mb-3">Data Transformation &amp; Storage Optimization</h3>
+          <p class="muted">Built data integration and transformation capabilities for a luxury-fashion client, supporting operational data marts, finance dimensional models, and store-traffic analytics.</p>
+          <ul class="bullet-list">
+            <li>Developed configuration-driven Azure Data Factory pipelines to extract historical and incremental data from on-premises SQL Server and Synapse Serverless SQL sources, landing the data in ADLS Gen2 as Parquet files.</li>
+            <li>Created Synapse Serverless SQL views to transform and serve Parquet data, then configured external tables in Azure SQL Database and stored procedures to incrementally load operational data marts.</li>
+            <li>Built Synapse Spark processing to retrieve store-traffic details from REST API endpoints, transform the data, and store it as Delta Lake tables in ADLS Gen2; orchestrated the job to run every 30 minutes.</li>
+            <li>Designed finance-detail dimensional models for Customer, Vendor, and Item Price modules, and developed fact and dimension tables in Delta Lake using historical and incremental Spark loads.</li>
+          </ul>
+          <div class="mt-3 small muted">Stack: Azure Data Factory, Azure Synapse Analytics, ADLS Gen2, Azure SQL Database, Apache Spark, Delta Lake, Python, T-SQL, REST APIs, Git, Azure DevOps.</div>
+        </article>
+      </div>
+      <div class="col-lg-6">
+        <article class="surface project-card p-4 p-lg-5">
+          <div class="project-number mb-2">PROJECT 06 · TIGER ANALYTICS · DATA PLATFORM ACCELERATOR</div>
+          <h3 class="h4 mb-3">Snowflake Data Fabric Accelerator</h3>
+          <p class="muted">Contributed to an accelerator framework for automating Snowflake data transformations and continuously ingesting files from external stages into a Medallion architecture.</p>
+          <ul class="bullet-list">
+            <li>Developed automated dbt transformation pipelines for Snowflake objects.</li>
+            <li>Built a Python Snowpark framework to continuously load files as they became available in Snowflake external stages.</li>
+            <li>Implemented the ingestion and transformation flow to populate Bronze, Silver, and Gold layer tables.</li>
+          </ul>
+          <div class="mt-3 small muted">Stack: Snowflake, dbt, Snowpipe, Snowpark Python, external stages, Git, GitHub.</div>
+        </article>
+      </div>
+      <div class="col-lg-6">
+        <article class="surface project-card p-4 p-lg-5">
+          <div class="project-number mb-2">PROJECT 07 · TIGER ANALYTICS · FINTECH</div>
+          <h3 class="h4 mb-3">Cloud Data Warehouse &amp; Migration</h3>
+          <p class="muted">Worked across Software Engineer and Senior Software Engineer responsibilities to build and enhance an Azure Synapse-based cloud data warehouse and its historical and incremental ELT pipelines.</p>
+          <ul class="bullet-list">
+            <li>Built historical and incremental ETL pipelines to extract data from PostgreSQL and MongoDB, transform it using PySpark, and load it into the Azure Synapse Warehouse.</li>
+            <li>Designed and modelled the Synapse Data Warehouse and developed ELT pipelines, SCD Type 1 stored procedures, and materialized views.</li>
+            <li>Designed and developed a framework to monitor source schema changes using Azure Synapse and Azure Data Factory pipelines.</li>
+          </ul>
+          <div class="mt-3 small muted">Stack: Azure Synapse Analytics, ADLS Gen2, Apache Spark, PySpark, Python, PostgreSQL, MongoDB, Azure Data Factory, SQL.</div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background:rgba(255,255,255,.018)">
+  <div class="container">
+    <div class="section-kicker mb-2">04 / Career journey</div>
+    <h2 class="section-title mb-4">Professional experience</h2>
+    <div class="surface p-4 p-lg-5">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="role-date">November 2024 – Present</div>
+          <h3 class="h5 mt-1 mb-1">Senior Data Engineer</h3>
+          <div class="role-company mb-2">Cyncly · Bengaluru</div>
+          <p class="muted mb-0">Building the Data Insights Platform through Azure Event Hubs, FastAPI, Azure Functions, ADLS Gen2, Synapse Spark, and Snowflake. Working on Snowflake NLQ and MCP integrations, Reader Account administration for five customers, and Snowpark performance optimization for Power BI refreshes.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="role-date">July 2024 – November 2024</div>
+          <h3 class="h5 mt-1 mb-1">Data Engineer</h3>
+          <div class="role-company mb-2">Tiger Analytics · Chennai</div>
+          <p class="muted mb-0">Worked on the Luxury-Fashion client’s finance dimensional models and Delta Lake pipelines, and contributed to the Snowflake Data Fabric Accelerator with dbt transformations and Snowpark-based external-stage ingestion across Bronze, Silver, and Gold layers.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="role-date">July 2022 – June 2024</div>
+          <h3 class="h5 mt-1 mb-1">Senior Software Engineer – Data Engineering / Warehousing</h3>
+          <div class="role-company mb-2">Tiger Analytics · Chennai</div>
+          <p class="muted mb-0">Worked on the Fintech cloud data warehouse and the Luxury-Fashion data transformation platform. Designed Synapse warehouse models, ELT pipelines, SCD Type 1 stored procedures, materialized views, and source-schema monitoring; also built configuration-driven Azure Data Factory pipelines, operational data marts, and Spark-based Delta Lake processing for historical, incremental, and REST API data.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="role-date">August 2021 – June 2022</div>
+          <h3 class="h5 mt-1 mb-1">Software Engineer – Data Engineering / Warehousing</h3>
+          <div class="role-company mb-2">Tiger Analytics · Chennai</div>
+          <p class="muted mb-0">Started on the Fintech cloud data warehouse, building historical and incremental ETL pipelines to extract data from PostgreSQL and MongoDB, transform it with PySpark, and load it into the Azure Synapse Warehouse. This work was later extended into warehouse modelling, ELT, stored procedures, materialized views, and source-schema monitoring in the Senior Software Engineer role.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="role-date">February 2021 – June 2021</div>
+          <h3 class="h5 mt-1 mb-1">Data Engineer Intern</h3>
+          <div class="role-company mb-2">Tiger Analytics · Chennai</div>
+          <p class="muted mb-0">Learned Data Engineering and Data Warehousing fundamentals; worked on PySpark case studies and mini-projects using Azure Data Factory and Snowflake.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-kicker mb-2">05 / Education &amp; certifications</div>
+    <h2 class="section-title mb-4">Learning foundation</h2>
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="surface p-4 h-100">
+          <div class="icon-tile mb-3"><i class="bi bi-mortarboard"></i></div>
+          <h3 class="h5">B.E. – Computer Science and Engineering</h3>
+          <p class="muted mb-1">Sri Venkateswara College of Engineering · Anna University</p>
+          <p class="small muted mb-2">2017 – 2021 · Tamil Nadu, India</p>
+          <div class="metric fs-3">9.45 CGPA</div>
+          <hr class="divider my-3">
+          <h3 class="h6">Higher Secondary School Education</h3>
+          <p class="muted mb-1">Dr. VGN Matriculation and Higher Secondary School</p>
+          <p class="small muted mb-0">2015 – 2017 · 95.5%</p>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="surface p-4 h-100">
+          <div class="icon-tile mb-3"><i class="bi bi-patch-check"></i></div>
+          <h3 class="h5 mb-3">Certifications &amp; badges</h3>
+          <div class="mb-3"><strong>Microsoft</strong><div class="muted small">Azure Fundamentals (AZ-900) · Data Fundamentals (DP-900) · Azure Data Engineer Associate (DP-203)</div></div>
+          <hr class="divider">
+          <div class="mb-3"><strong>Databricks</strong><div class="muted small">Data Engineer Associate · Data Engineer Professional · Associate Developer for Spark 3.0 (Python) · Lakehouse Fundamentals</div></div>
+          <hr class="divider">
+          <div class="mb-3"><strong>Snowflake</strong><div class="muted small">SnowPro Core Certification · Hands-on Essentials: Data Warehouse, Data Sharing, Data Lake, and Data Engineering</div></div>
+          <hr class="divider">
+          <div class="mb-3"><strong>dbt</strong><div class="muted small">dbt Fundamentals</div></div>
+          <hr class="divider">
+          <div><strong>Apache Airflow</strong><div class="muted small">Astronomer Certification for Apache Airflow Fundamentals</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:rgba(255,255,255,.018)">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <div class="section-kicker mb-2">06 / Contact</div>
+        <h2 class="section-title mb-3">Let's build something meaningful.</h2>
+        <p class="section-intro mb-0">Interested in data platforms, cloud engineering, Snowflake, or AI-enabled analytics? Feel free to connect.</p>
+      </div>
+      <div class="col-lg-6">
+        <div class="surface p-4 p-lg-5">
+          <div class="d-grid gap-3">
+            <a class="contact-link" href="mailto:dineshvenkatm@gmail.com"><i class="bi bi-envelope"></i><span><strong>Email</strong><br><span class="muted">dineshvenkatm@gmail.com</span></span></a>
+            <a class="contact-link" href="tel:+919626210026"><i class="bi bi-telephone"></i><span><strong>Phone</strong><br><span class="muted">+91 96262 10026</span></span></a>
+            <a class="contact-link" href="https://www.linkedin.com/in/m-dinesh-kumar-sai/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i><span><strong>LinkedIn</strong><br><span class="muted">linkedin.com/in/m-dinesh-kumar-sai/</span></span></a>
+            <div class="contact-link"><i class="bi bi-geo-alt"></i><span><strong>Location</strong><br><span class="muted">Bengaluru, India</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+    <span>© <span id="year">2026</span> Dinesh Kumar Sai Melapadi</span>
+    <span>Senior Data Engineer · Azure · Snowflake · AI Analytics</span>
+  </div>
+</footer>
+
+<a class="btn btn-accent back-top d-grid place-items-center" href="#home" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  // Close the mobile navigation after a section link is selected.
+  document.querySelectorAll("#navContent .nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      const menu = document.getElementById("navContent");
+      if (menu.classList.contains("show") && window.bootstrap) {
+        bootstrap.Collapse.getOrCreateInstance(menu).hide();
+      }
+    });
+  });
+</script>
+</body>
+</html>
